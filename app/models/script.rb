@@ -1,7 +1,5 @@
 class Script < ActiveRecord::Base
   attr_accessible :beschreibung, :dozent, :erscheinungsdatum, :fachrichtung, :hochschule, :kurs, :name, :upload
-  has_attached_file :script
-
 
   has_attached_file :upload,
                     :url  => "/assets/scripts/:basename.:extension",

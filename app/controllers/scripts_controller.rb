@@ -73,8 +73,6 @@ class ScriptsController < ApplicationController
   # DELETE /scripts/1.json
   def destroy
     @script = Script.find(params[:id])
-    debugger
-    #@script.upload.destroy
     @script.destroy
 
     respond_to do |format|
