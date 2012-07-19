@@ -80,4 +80,20 @@ class ScriptsController < ApplicationController
       format.json { head :no_content }
     end
   end
+
+  def download
+    @script = Script.find(params[:id])
+
+    #HIER ÜBERPRÜFUNG VON ZUGANG ZUR DATEI ANFRAGEN
+   # if current_user.has_bought?(product) or current_user.is_superuser?
+    #  if File.exist?(path = product.filepath)
+        send_file @script.upload.path , :content_type =>  @script.upload.content_type
+     # else
+      #  not_found
+     # end
+    #else
+     # not_authorized
+    #end
+  end
+
 end
