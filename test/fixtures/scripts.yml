@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  name: MyString
+  dozent: MyString
+  kurs: MyString
+  fachrichtung: MyString
+  hochschule: MyString
+  beschreibung: MyText
+  erscheinungsdatum: 2012-07-19
+
+two:
+  name: MyString
+  dozent: MyString
+  kurs: MyString
+  fachrichtung: MyString
+  hochschule: MyString
+  beschreibung: MyText
+  erscheinungsdatum: 2012-07-19

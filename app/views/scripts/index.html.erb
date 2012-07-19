@@ -1,0 +1,35 @@
+<h1>Listing scripts</h1>
+
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Dozent</th>
+    <th>Kurs</th>
+    <th>Fachrichtung</th>
+    <th>Hochschule</th>
+    <th>Beschreibung</th>
+    <th>Erscheinungsdatum</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @scripts.each do |script| %>
+  <tr>
+    <td><%= script.name %></td>
+    <td><%= script.dozent %></td>
+    <td><%= script.kurs %></td>
+    <td><%= script.fachrichtung %></td>
+    <td><%= script.hochschule %></td>
+    <td><%= script.beschreibung %></td>
+    <td><%= script.erscheinungsdatum %></td>
+    <td><%= link_to 'Show', script %></td>
+    <td><%= link_to 'Edit', edit_script_path(script) %></td>
+    <td><%= link_to 'Destroy', script, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Script', new_script_path %>

@@ -1,0 +1,45 @@
+<%= form_for(@script) do |f| %>
+  <% if @script.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@script.errors.count, "error") %> prohibited this script from being saved:</h2>
+
+      <ul>
+      <% @script.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :name %><br />
+    <%= f.text_field :name %>
+  </div>
+  <div class="field">
+    <%= f.label :dozent %><br />
+    <%= f.text_field :dozent %>
+  </div>
+  <div class="field">
+    <%= f.label :kurs %><br />
+    <%= f.text_field :kurs %>
+  </div>
+  <div class="field">
+    <%= f.label :fachrichtung %><br />
+    <%= f.text_field :fachrichtung %>
+  </div>
+  <div class="field">
+    <%= f.label :hochschule %><br />
+    <%= f.text_field :hochschule %>
+  </div>
+  <div class="field">
+    <%= f.label :beschreibung %><br />
+    <%= f.text_area :beschreibung %>
+  </div>
+  <div class="field">
+    <%= f.label :erscheinungsdatum %><br />
+    <%= f.date_select :erscheinungsdatum %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

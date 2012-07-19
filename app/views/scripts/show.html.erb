@@ -1,0 +1,40 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Name:</b>
+  <%= @script.name %>
+</p>
+
+<p>
+  <b>Dozent:</b>
+  <%= @script.dozent %>
+</p>
+
+<p>
+  <b>Kurs:</b>
+  <%= @script.kurs %>
+</p>
+
+<p>
+  <b>Fachrichtung:</b>
+  <%= @script.fachrichtung %>
+</p>
+
+<p>
+  <b>Hochschule:</b>
+  <%= @script.hochschule %>
+</p>
+
+<p>
+  <b>Beschreibung:</b>
+  <%= @script.beschreibung %>
+</p>
+
+<p>
+  <b>Erscheinungsdatum:</b>
+  <%= @script.erscheinungsdatum %>
+</p>
+
+
+<%= link_to 'Edit', edit_script_path(@script) %> |
+<%= link_to 'Back', scripts_path %>
