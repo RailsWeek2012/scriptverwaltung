@@ -1,7 +1,7 @@
 Scriptverwaltung::Application.routes.draw do
   resources :scripts
 
-  get "scripts/:id/download" => "scripts#download"
+  get "scripts/:id/download" => "scripts#download", as: "download_script"
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

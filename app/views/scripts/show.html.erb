@@ -35,9 +35,9 @@
   <%= @script.erscheinungsdatum %>
 </p>
 
-<p><%= link_to ">>> #{@script.name} <<<", "#{@script.id}/download" %></p>
+<p><%= link_to ">>> #{@script.name} <<<", download_script_path(@script) %></p>
 
-
+<!--"#{@script.id}/download"-->
 
 <%= link_to 'Edit', edit_script_path(@script) %> |
 <%= link_to 'Back', scripts_path %>

@@ -94,6 +94,7 @@ class ScriptsController < ApplicationController
     #else
      # not_authorized
     #end
+   # redirect_to scripts_url
   end
 
 end
