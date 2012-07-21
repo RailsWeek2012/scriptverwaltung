@@ -26,6 +26,6 @@ class SessionsController < ApplicationController
   def destroy
     session[:user_id] = nil
     redirect_to scripts_path,
-                notice: "Sie haben Sich ausgeloggt."
+                notice: "Sie haben sich abgemeldet."
   end
 end

@@ -60,6 +60,7 @@ class ScriptsController < ApplicationController
   # PUT /scripts/1
   # PUT /scripts/1.json
   def update
+    return if redirect_guest_to_login
     @script = Script.find(params[:id])
 
     respond_to do |format|
@@ -76,6 +77,7 @@ class ScriptsController < ApplicationController
   # DELETE /scripts/1
   # DELETE /scripts/1.json
   def destroy
+    return if redirect_guest_to_login
     @script = Script.find(params[:id])
     @script.destroy
 
