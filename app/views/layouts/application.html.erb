@@ -7,8 +7,27 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
+<% if flash[:notice] %>
+    <div class="alert alert-info">
+      <button type="button" class="close" data-dismiss="alert">&times;</button>
+      <%= flash[:notice] %>
+    </div>
+<% end %>
+<% if flash[:alert] %>
+    <div class="alert alert-alert">
+      <button type="button" class="close" data-dismiss="alert">&times;</button>
+      <%= flash[:alert] %>
+    </div>
+<% end %>
+<% if user_signed_in? %>
+    <%= link_to "Logout" , logout_path, method: :delete  %>
+<% else %>
+    <%= link_to "Login", login_path %>
+<% end %>
 
 <%= yield %>
+
+
 
 </body>
 </html>

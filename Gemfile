@@ -22,9 +22,22 @@ end
 
 gem 'jquery-rails'
 gem "paperclip", "~> 3.0"
+gem 'omniauth'
+gem 'omniauth-identity'
+gem 'omniauth-cas'
+
+#dependencies omniauth-cas
+gem 'addressable'
+gem 'awesome_print'
+gem 'bourne'
+gem 'simplecov'
+gem 'nokogiri'
+gem 'rspec'
+#gem 'webmock'
+
 
 # To use ActiveModel has_secure_password
-# gem 'bcrypt-ruby', '~> 3.0.0'
+gem 'bcrypt-ruby', '~> 3.0.0'
 
 # To use Jbuilder templates for JSON
 # gem 'jbuilder'

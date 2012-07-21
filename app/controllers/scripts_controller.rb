@@ -1,3 +1,4 @@
+#Encoding: utf-8
 class ScriptsController < ApplicationController
   # GET /scripts
   # GET /scripts.json
@@ -24,6 +25,7 @@ class ScriptsController < ApplicationController
   # GET /scripts/new
   # GET /scripts/new.json
   def new
+    return if redirect_guest_to_login
     @script = Script.new
 
     respond_to do |format|
@@ -34,17 +36,19 @@ class ScriptsController < ApplicationController
 
   # GET /scripts/1/edit
   def edit
+    return if redirect_guest_to_login
     @script = Script.find(params[:id])
   end
 
   # POST /scripts
   # POST /scripts.json
   def create
+    return if redirect_guest_to_login
     @script = Script.new(params[:script])
 
     respond_to do |format|
       if @script.save
-        format.html { redirect_to @script, notice: 'Script was successfully created.' }
+        format.html { redirect_to @script, notice: 'Script wurde angelegt' }
         format.json { render json: @script, status: :created, location: @script }
       else
         format.html { render action: "new" }
@@ -60,7 +64,7 @@ class ScriptsController < ApplicationController
 
     respond_to do |format|
       if @script.update_attributes(params[:script])
-        format.html { redirect_to @script, notice: 'Script was successfully updated.' }
+        format.html { redirect_to @script, notice: 'Script wurde geändert.' }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }

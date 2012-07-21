@@ -1,7 +1,15 @@
 Scriptverwaltung::Application.routes.draw do
+
+
+  match "/auth/:provider/callback", :to => "sessions#create"
+  match "/auth/failure", :to => "sessions#failure"
+
   resources :scripts
 
   get "scripts/:id/download" => "scripts#download", as: "download_script"
+
+  get   "login" => 'sessions#new', as: "login"
+  delete "logout" => "sessions#destroy", as: "logout"
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
