@@ -17,6 +17,9 @@ group :assets do
   # See https://github.com/sstephenson/execjs#readme for more supported runtimes
   # gem 'therubyracer', :platforms => :ruby
 
+	#Bootstrap
+	gem 'bootstrap-sass', '~> 2.0.4.0'
+
   gem 'uglifier', '>= 1.0.3'
 end
 
@@ -34,7 +37,6 @@ gem 'simplecov'
 gem 'nokogiri'
 gem 'rspec'
 #gem 'webmock'
-
 
 # To use ActiveModel has_secure_password
 gem 'bcrypt-ruby', '~> 3.0.0'
