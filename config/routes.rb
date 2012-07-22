@@ -1,6 +1,10 @@
 Scriptverwaltung::Application.routes.draw do
 
 
+  get "users/:id" => "users#show", as: "show_user"
+
+  delete "users/:id" => "users#destroy", as: "destroy_user"
+
   match "/auth/:provider/callback", :to => "sessions#create"
   match "/auth/failure", :to => "sessions#failure"
 

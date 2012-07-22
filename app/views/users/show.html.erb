@@ -1,0 +1,11 @@
+<h1>Userprofil von <%= @user.username %> </h1>
+<p>Username: <%= @user.username %> </p>
+<% if user_signed_in? and @user.id == session[:user_id] #mache den nachfolgenden Content nur den den eigenen User sichtbar %>
+<p>Haupt-email: <%= @user.email %> </p>
+<br><br>
+    <h3>Registrierte Authentifizierungsservices </h3>
+    <% @user.authorizations.each do |auth|%>
+        <p> <%= auth.provider.to_s + " (uid: " + auth.uid + ")"  %></p>
+    <% end %>
+<% end %>
+
