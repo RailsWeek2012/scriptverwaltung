@@ -5,7 +5,7 @@ class Script < ActiveRecord::Base
                     :path => ":rails_root/uploaded_scripts/:id-:basename.:extension"
 
   validates_attachment_presence :upload
-  validates_attachment_size :upload, :less_than => 5.megabytes
-  validates_attachment_content_type :upload, :content_type => ['image/jpeg', 'application/pdf']
+  validates_attachment_size :upload, less_than: 5.megabytes
+  validates_attachment_content_type :upload, content_type: ['image/jpeg', 'application/pdf', 'application/x-pdf']
 
 end
