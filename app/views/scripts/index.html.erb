@@ -3,11 +3,17 @@
 <table>
   <tr>
     <th>Name</th>
+        <th>|</th>
     <th>Dozent</th>
+        <th>|</th>
     <th>Kurs</th>
+        <th>|</th>
     <th>Fachrichtung</th>
+        <th>|</th>
     <th>Hochschule</th>
+        <th>|</th>
     <th>Beschreibung</th>
+        <th>|</th>
     <th>Erscheinungsdatum</th>
     <th></th>
     <th></th>
@@ -23,13 +29,13 @@
     <td><%= script.hochschule %></td>
     <td><%= script.beschreibung %></td>
     <td><%= script.erscheinungsdatum %></td>
-    <td><%= link_to 'Show', script %></td>
-    <td><%= link_to 'Edit', edit_script_path(script) %></td>
-    <td><%= link_to 'Destroy', script, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    <td><%= link_to 'Show', script, :class => "btn btn-mini btn-info" %></td>
+    <td><%= link_to 'Edit', edit_script_path(script), :class => "btn btn-mini" %></td>
+    <td><%= link_to 'Destroy', script, method: :delete, data: { confirm: 'Are you sure?', :class => "btn btn-mini btn-danger" } %></td>
   </tr>
 <% end %>
 </table>
 
 <br />
 
-<%= link_to 'New Script', new_script_path %>
+<%= link_to 'New Script', new_script_path, :class => "btn btn-mini btn-info" %>

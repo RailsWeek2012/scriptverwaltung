@@ -7,27 +7,51 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-<% if flash[:notice] %>
+   <div class="container"> 
+      <div class="page-header">  
+        <div class="navbar navbar-fixed-top">
+          <div class="navbar-inner">
+              <div class="container" >
+                <div class="row">
+                  <div class="span1">&nbsp;</div>
+                <div class="span1">
+                <% if user_signed_in? %>
+                    <%= link_to "Logout" , logout_path, :class => "btn btn-mini btn-danger", method: :delete  %>
+                <% else %>
+                    <%= link_to "Login", login_path, :class => "btn btn-mini btn-info" %>
+                <% end %>
+              </div>
+            </div>
+              </div>
+            </div>
+        </div>
+      </div>
+    </div> 
+
+  <div class="row">
+    <div class="span1">&nbsp;</div>
+    <div class="span1">                
+      <% if flash[:notice] %>
+
     <div class="alert alert-info">
       <button type="button" class="close" data-dismiss="alert">&times;</button>
       <%= flash[:notice] %>
     </div>
-<% end %>
-<% if flash[:alert] %>
+      <% end %>
+      <% if flash[:alert] %>
     <div class="alert alert-alert">
       <button type="button" class="close" data-dismiss="alert">&times;</button>
       <%= flash[:alert] %>
     </div>
-<% end %>
-<% if user_signed_in? %>
-    <%= link_to "Logout" , logout_path, method: :delete  %>
-<% else %>
-    <%= link_to "Login", login_path %>
-<% end %>
+        <% end %>
+        
 
-<%= yield %>
+      <%= yield %>
+
+</div>
 
 
 
 </body>
+
 </html>
