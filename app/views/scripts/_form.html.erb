@@ -1,15 +1,5 @@
 <%= form_for(@script, :html => { :multipart => true }) do |f| %>
-  <% if @script.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@script.errors.count, "error") %> prohibited this script from being saved:</h2>
-
-      <ul>
-      <% @script.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
+  <%= render :partial => 'shared/error', :locals => {:entity => @script, :text => "dieses Script" } %>
 
   <div class="field">
     <%= f.label :name %><br />

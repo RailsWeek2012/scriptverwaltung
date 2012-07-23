@@ -32,10 +32,20 @@
   <%= @script.erscheinungsdatum %>
 </p>
 
-<p><%= link_to "Donwload", download_script_path(@script), :class => "btn btn-mini btn-info" %></p>
+<p><%= link_to "Download", download_script_path(@script), :class => "btn btn-mini btn-info" %></p>
 
 <!--"#{@script.id}/download"-->
 
 <%= link_to 'Edit', edit_script_path(@script), :class => "btn btn-mini btn-danger" %>
 <%= link_to 'Back', scripts_path, :class => "btn btn-mini" %>
+
+<h3>Bewertungen</h3>
+<% @script.comments.each do |comment| %>
+      <p>Note: <%= comment.mark %> User: <%= comment.user.username %> </p>
+      <%= comment.content %>
+      <hr>
+<% end %>
+
+<%= link_to 'Script bewerten', comment_script_path(@script), :class => "btn btn-mini" %>
+
 

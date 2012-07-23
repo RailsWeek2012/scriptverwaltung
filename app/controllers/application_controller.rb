@@ -28,6 +28,18 @@ class ApplicationController < ActionController::Base
         false
       end
     end
+    def require_login!
+      unless user_signed_in?
+        redirect_to login_path, alert: "Bitte melden Sie sich zuerst an."
+      end
+    end
 
-  helper_method :user_signed_in?, :current_user, :redirect_guest_to_login, :isAdmin?
+    def only_owner!
+      @script = Script.find(params[:id])
+      unless current_user == @script.user || isAdmin?
+        redirect_to scripts_path, alert: "Sie haben keine Berechtigung die Ressource zu ändern"
+      end
+    end
+
+  helper_method :user_signed_in?, :current_user, :redirect_guest_to_login, :isAdmin?, :require_login!, :only_owner!
 end

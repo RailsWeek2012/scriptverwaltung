@@ -1,6 +1,6 @@
 class CommentsController < ApplicationController
-
-   # GET /comments/new
+  before_filter :require_login!
+  # GET /comments/new
   # GET /comments/new.json
   def new
     @comment = Comment.new
