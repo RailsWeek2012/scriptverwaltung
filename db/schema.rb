@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120720174459) do
+ActiveRecord::Schema.define(:version => 20120723072712) do
 
   create_table "authorizations", :force => true do |t|
     t.string   "provider"
@@ -37,19 +37,22 @@ ActiveRecord::Schema.define(:version => 20120720174459) do
     t.string   "hochschule"
     t.text     "beschreibung"
     t.date     "erscheinungsdatum"
-    t.datetime "created_at",          :null => false
-    t.datetime "updated_at",          :null => false
+    t.datetime "created_at",                             :null => false
+    t.datetime "updated_at",                             :null => false
     t.string   "upload_file_name"
     t.string   "upload_content_type"
     t.integer  "upload_file_size"
     t.datetime "upload_updated_at"
+    t.integer  "user_id"
+    t.boolean  "activated",           :default => false
   end
 
   create_table "users", :force => true do |t|
     t.string   "username"
     t.string   "email"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.boolean  "isAdmin",    :default => false
+    t.datetime "created_at",                    :null => false
+    t.datetime "updated_at",                    :null => false
   end
 
 end

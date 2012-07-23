@@ -45,6 +45,7 @@ class ScriptsController < ApplicationController
   def create
     return if redirect_guest_to_login
     @script = Script.new(params[:script])
+    @script.user= User.find(session[:user_id])
 
     respond_to do |format|
       if @script.save

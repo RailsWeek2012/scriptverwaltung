@@ -5,3 +5,12 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+
+#Create Admin vewg30
+
+v = User.new
+v.username= 'vewg30'
+v.email= 'vincent.elliott.wagner@mni.thm.de'
+v.isAdmin= true
+v.save
+a = Authorization.create(user: v,provider: 'cas',uid: 'vewg30')

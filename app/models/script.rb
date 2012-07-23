@@ -1,4 +1,5 @@
 class Script < ActiveRecord::Base
+  belongs_to :user
   attr_accessible :beschreibung, :dozent, :erscheinungsdatum, :fachrichtung, :hochschule, :kurs, :name, :upload
 
   has_attached_file :upload,

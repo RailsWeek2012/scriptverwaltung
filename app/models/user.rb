@@ -2,6 +2,7 @@ class User < ActiveRecord::Base
   attr_accessible :email, :username
 
   has_many :authorizations
+  has_many :scripts
   validates :username, :email, :presence => true
 
   def add_new_provider auth_hash
