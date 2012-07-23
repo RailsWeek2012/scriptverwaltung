@@ -1,0 +1,33 @@
+
+<br>
+<table class="table table-striped table-bordered table-condesed">
+  <tr>
+    <th>Name</th>
+    <th>Dozent</th>
+    <th>Kurs</th>
+    <th>Fachrichtung</th>
+    <th>Hochschule</th>
+    <th>Erscheinungsdatum</th>
+    <th></th>
+
+  </tr>
+
+<% scripts.each do |script| %>
+  <tr>
+    <td><%= script.name %></td>
+    <td><%= script.dozent %></td>
+    <td><%= script.kurs %></td>
+    <td><%= script.fachrichtung %></td>
+    <td><%= script.hochschule %></td>
+    <td><%= script.erscheinungsdatum %></td>
+    <td>
+        <p>
+            <%= link_to "Donwload", download_script_path(script), :class => "btn btn-mini btn-info" %>
+            <%= link_to 'Show', script, :class => "btn btn-mini btn-info" %>
+        </p>
+        <%= render partial: 'scripts/index_buttons', locals: {script: script} %>
+    </td>
+    </tr>
+<% end %>
+</table>
+<br />
