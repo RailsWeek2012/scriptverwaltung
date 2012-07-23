@@ -1,58 +1,48 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <title>Scriptverwaltung</title>
-  <%= stylesheet_link_tag    "application", :media => "all" %>
-  <%= javascript_include_tag "application" %>
-  <%= csrf_meta_tags %>
-</head>
-<body>
-   <div class="container"> 
-      <div class="page-header">  
-        <div class="navbar navbar-fixed-top">
-          <div class="navbar-inner">
-              <div class="container" >
-                <div class="row">
-                  <div class="span4"><a class="brand" href="<%= scripts_path %>">Scriptverwaltung</a></div>
-                  <div class="span4"> &nbsp; </div>
-                  <div class="span4">
-                    <% if user_signed_in? %>
-                    <%= link_to "Logout" , logout_path, :class => "btn btn-mini btn-danger", method: :delete  %>
-                    <% else %>
-                    <%= link_to "Login", login_path, :class => "btn btn-mini btn-info" %>
-                <% end %>
-              </div>
+    <head>
+        <title>Scriptverwaltung</title>
+        <%= stylesheet_link_tag    "application", :media => "all" %>
+        <%= javascript_include_tag "application" %>
+        <%= csrf_meta_tags %>
+    </head>
+    <body>
+        <div class="container">
+            <div class="page-header">
+                <div class="navbar navbar-fixed-top">
+                    <div class="navbar-inner">
+                        <div class="container" >
+                            <div class="row">
+                                <div class="span4"><a class="brand" href="<%= scripts_path %>">Scriptverwaltung</a></div>
+                                <div class="span4"> &nbsp; </div>
+                                <div class="span4">
+                                    <% if user_signed_in? %>
+                                        <%= link_to "Logout" , logout_path, :class => "btn btn-mini btn-danger", method: :delete  %>
+                                    <% else %>
+                                        <%= link_to "Login", login_path, :class => "btn btn-mini btn-info" %>
+                                    <% end %>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
-              </div>
+
+            <div id="content">
+                <% if flash[:notice] %>
+                    <div class="alert alert-info">
+                        <button type="button" class="close" data-dismiss="alert">&times;</button>
+                        <%= flash[:notice] %>
+                    </div>
+                <% end %>
+                <% if flash[:alert] %>
+                    <div class="alert alert-alert">
+                        <button type="button" class="close" data-dismiss="alert">&times;</button>
+                        <%= flash[:alert] %>
+                    </div>
+                <% end %>
+                <%= yield %>
             </div>
         </div>
-      </div>
-    </div> 
-
-  <div class="row">
-    <div class="span1">&nbsp;</div>
-    <div class="span1">                
-      <% if flash[:notice] %>
-
-    <div class="alert alert-info">
-      <button type="button" class="close" data-dismiss="alert">&times;</button>
-      <%= flash[:notice] %>
-    </div>
-      <% end %>
-      <% if flash[:alert] %>
-    <div class="alert alert-alert">
-      <button type="button" class="close" data-dismiss="alert">&times;</button>
-      <%= flash[:alert] %>
-    </div>
-        <% end %>
-        
-
-      <%= yield %>
-
-</div>
-
-
-
-</body>
-
+    </body>
 </html>
