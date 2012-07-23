@@ -1,5 +1,3 @@
-  <div class="span1"></div>
-  <div class="span12"> 
 <%= form_for(@script, :html => { :multipart => true }) do |f| %>
   <% if @script.errors.any? %>
     <div id="error_explanation">
@@ -50,5 +48,4 @@
 <%= link_to 'Show', @script, :class => "btn btn-mini" %>
 <%= link_to 'Back', scripts_path, :class => "btn btn-mini" %>
 
-</div>
-<div class="span1"></div>
+

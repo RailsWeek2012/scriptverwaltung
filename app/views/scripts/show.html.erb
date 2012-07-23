@@ -34,12 +34,10 @@
   <%= @script.erscheinungsdatum %>
 </p>
 
-<p><%= link_to ">>> #{@script.name} <<<", download_script_path(@script) %></p>
+<p><%= link_to "Donwload", download_script_path(@script), :class => "btn btn-mini btn-info" %></p>
 
 <!--"#{@script.id}/download"-->
 
 <%= link_to 'Edit', edit_script_path(@script), :class => "btn btn-mini btn-danger" %>
 <%= link_to 'Back', scripts_path, :class => "btn btn-mini" %>
 
-</div>
-<div class="span4">&nbsp;</div>

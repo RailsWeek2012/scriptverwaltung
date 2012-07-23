@@ -4,8 +4,10 @@ class ScriptsController < ApplicationController
   before_filter :only_owner!, :only => [:edit, :update, :destroy]
   # GET /scripts
   # GET /scripts.json
+
   def index
-    @scripts = Script.all
+    @scripts = Script.search(params[:search])
+
 
     respond_to do |format|
       format.html # index.html.erb
