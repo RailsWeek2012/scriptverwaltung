@@ -88,18 +88,20 @@ class ScriptsController < ApplicationController
   end
 
   def download
-    @script = Script.find(params[:id])
-
-    #HIER ÜBERPRÜFUNG VON ZUGANG ZUR DATEI ANFRAGEN
-   # if current_user.has_bought?(product) or current_user.is_superuser?
-    #  if File.exist?(path = product.filepath)
-        send_file @script.upload.path , :content_type =>  @script.upload.content_type
-     # else
-      #  not_found
-     # end
-    #else
-     # not_authorized
-    #end
-   # redirect_to scripts_url
+    if script_activated?
+      @script = Script.find(params[:id])
+      send_file @script.upload.path , :content_type =>  @script.upload.content_type
+    else
+      redirect_to scripts_path, :alert => "Das Script ist noch nicht freigeschaltet oder existiert nicht"
+    end
   end
+
+  private
+    def script_activated?
+      @script = Script.find(params[:id])
+      unless @script.nil?
+        return (@script.user == current_user or isAdmin?)
+      end
+      false
+    end
 end

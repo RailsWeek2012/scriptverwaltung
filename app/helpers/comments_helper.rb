@@ -1,3 +1,4 @@
+#encoding: utf-8
 module CommentsHelper
   def create_comment
     sc = Script.find(params[:comment][:script])

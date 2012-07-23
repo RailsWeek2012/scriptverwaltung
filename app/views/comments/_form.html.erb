@@ -1,16 +1,19 @@
 <%= form_for(@comment) do |f| %>
   <%= render :partial => 'shared/error', :locals => {:entity => @comment, :text => "dieser Kommentar" } %>
   <div class="field">
-    <%= f.label :content %><br />
+    <%= f.label 'Inhalt' %><br />
     <%= f.text_area :content %>
   </div>
-  <div class="field">
-    <%= f.label :mark %><br />
-    <%= f.number_field :mark %>
-  </div>
+    <div class="form_row">
+      <label for="mark">Note:</label>
+      <% [ '1', '2', '3', '4', '5', '6' ].each do |z| %>
+          <%=radio_button("comment", :mark, z) %>
+          <%= z.humanize %>
+          &nbsp;
+      <% end %>
+    </div>
   <div class="actions">
     <%= f.submit %>
   </div>
-  <%= f.hidden_field :script, :value => params[:id] %>
-
+  <%= f.hidden_field :script, :value => @script.id %>
 <% end %>
