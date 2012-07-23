@@ -1,3 +1,5 @@
 
 <%= link_to('Edit', edit_script_path(script), :class => "btn btn-mini") if isAdmin? || isOwner?(script) %>
 <%= link_to('Destroy', script, method: :delete, confirm: 'Are you sure?', :class => "btn btn-mini btn-danger") if isAdmin? || isOwner?(script) %>
+<%= link_to('Freigeben', activate_script_path(script), confirm: 'Are you sure?', :class => "btn btn-mini btn-danger") if isAdmin? && !isActiv?(script) %>
+

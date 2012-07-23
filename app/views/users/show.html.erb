@@ -12,9 +12,14 @@
         			</p>
     			<% end %>	
 		 <% end %>
-		<br>
+	  <br>
 	  <h3>Meine Uploades </h3>
 	 <%= render partial: 'shared/listings', locals: {scripts: @user.scripts} %>
+	  <br>
+	  <% if isAdmin? %>
+	  	<h3>Nicht Active Uploads</h3>
+	 	<%= render partial: 'listing_not_activ', locals: {scripts: Script.all} %>
+	 <% end %>
 </div>
 
 

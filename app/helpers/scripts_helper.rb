@@ -9,7 +9,7 @@ module ScriptsHelper
     render :nothing => true
   end
 
-  def isOwner? script
-  	current_user == script.user
+  def isActiv? script
+    script.activated
   end
 end

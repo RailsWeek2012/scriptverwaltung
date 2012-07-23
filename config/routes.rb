@@ -12,6 +12,7 @@ Scriptverwaltung::Application.routes.draw do
   resources :scripts
   get "scripts/:id/download" => "scripts#download", as: "download_script"
   get "scripts/:id/comment" => "comments#new", as: "comment_script"
+  get "scripts/:id/makeactiv" => "scripts#makeActiv", as: "activate_script"
 
   get   "login" => "sessions#new", as: "login"
   delete "logout" => "sessions#destroy", as: "logout"
