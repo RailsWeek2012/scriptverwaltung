@@ -99,6 +99,15 @@ class ScriptsController < ApplicationController
     end
   end
 
+  def makeActiv
+    if isAdmin?
+      @script = Script.find(params[:id])
+      @script.activated= true
+      @script.save
+    end
+    redirect_to show_user_path(current_user)
+  end
+
   private
     def script_activated?
       @script = Script.find(params[:id])
@@ -107,12 +116,5 @@ class ScriptsController < ApplicationController
       end
       false
     end
-    def makeActiv
-      if isAdmin?
-        @script = Script.find(params[:id])
-        @script.activated= true
-        @script.save
-      end
-        redirect_to show_user_path(current_user)
-      end
+
 end
