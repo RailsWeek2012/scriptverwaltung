@@ -10,4 +10,6 @@ class Script < ActiveRecord::Base
   validates_attachment_content_type :upload, content_type: ['image/jpeg', 'application/pdf', 'application/x-pdf', 'application/binary']   #Kleiner Workaround für den FF, der schickt pdf mit application/binary unter Linux
   validates_format_of :upload_file_name, with: %r{\.(pdf|jpg|jepg)$}i #Validierung des Dateinamen wegen des Workarounds.
 
+
+
 end

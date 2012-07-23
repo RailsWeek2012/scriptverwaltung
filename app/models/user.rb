@@ -21,7 +21,6 @@ class User < ActiveRecord::Base
       if auth_hash['provider']['cas']
         user = User.new :username => auth_hash["extra"]["user"], :email => auth_hash["extra"]["attributes"][0]["mail"]
         user.add_new_provider auth_hash
-        #user.authorizations.build :provider => auth_hash["provider"], :uid => auth_hash["uid"]
         user.save
         return user
       elsif auth_hash['provider']['identity']

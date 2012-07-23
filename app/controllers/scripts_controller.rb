@@ -1,5 +1,7 @@
 #Encoding: utf-8
 class ScriptsController < ApplicationController
+  before_filter :require_login!, :except => [ :show, :index, :download ]
+  before_filter :only_owner!, :only => [:edit, :update, :destroy]
   # GET /scripts
   # GET /scripts.json
   def index
@@ -25,7 +27,6 @@ class ScriptsController < ApplicationController
   # GET /scripts/new
   # GET /scripts/new.json
   def new
-    return if redirect_guest_to_login
     @script = Script.new
 
     respond_to do |format|
@@ -36,14 +37,12 @@ class ScriptsController < ApplicationController
 
   # GET /scripts/1/edit
   def edit
-    return if redirect_guest_to_login
     @script = Script.find(params[:id])
   end
 
   # POST /scripts
   # POST /scripts.json
   def create
-    return if redirect_guest_to_login
     @script = Script.new(params[:script])
     @script.user= User.find(session[:user_id])
 
@@ -61,7 +60,6 @@ class ScriptsController < ApplicationController
   # PUT /scripts/1
   # PUT /scripts/1.json
   def update
-    return if redirect_guest_to_login
     @script = Script.find(params[:id])
 
     respond_to do |format|
@@ -78,7 +76,6 @@ class ScriptsController < ApplicationController
   # DELETE /scripts/1
   # DELETE /scripts/1.json
   def destroy
-    return if redirect_guest_to_login
     @script = Script.find(params[:id])
     @script.destroy
 
@@ -103,5 +100,18 @@ class ScriptsController < ApplicationController
     #end
    # redirect_to scripts_url
   end
+
+  private
+    def require_login!
+      unless user_signed_in?
+        redirect_to login_path, alert: "Bitte melden Sie sich zuerst an."
+      end
+    end
+    def only_owner!
+      @script = Script.find(params[:id])
+      unless current_user == @script.user
+        redirect_to scripts_path, alert: 'Sie haben keine Berechtigung die Ressource zu ändern'
+      end
+    end
 
 end
