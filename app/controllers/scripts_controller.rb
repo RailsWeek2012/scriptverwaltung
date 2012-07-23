@@ -2,8 +2,10 @@
 class ScriptsController < ApplicationController
   # GET /scripts
   # GET /scripts.json
+
   def index
-    @scripts = Script.all
+    @scripts = Script.search(params[:search])
+
 
     respond_to do |format|
       format.html # index.html.erb
