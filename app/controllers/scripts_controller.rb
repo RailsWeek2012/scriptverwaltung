@@ -39,6 +39,7 @@ class ScriptsController < ApplicationController
 
   # GET /scripts/1/edit
   def edit
+
     @script = Script.find(params[:id])
   end
 
@@ -79,9 +80,11 @@ class ScriptsController < ApplicationController
   # DELETE /scripts/1.json
   def destroy
     @script = Script.find(params[:id])
-    @script.destroy
+    if isAdmin? || isOwner?(@script)
+      @script.destroy
 
-    respond_to do |format|
+      respond_to do |format|
+    end
       format.html { redirect_to scripts_url }
       format.json { head :no_content }
     end
@@ -102,4 +105,14 @@ class ScriptsController < ApplicationController
     #end
    # redirect_to scripts_url
   end
+
+  def makeActiv
+    if isAdmin?
+      @script = Script.find(params[:id])
+      @script.activated= true
+      @script.save
+    end
+    redirect_to show_user_path(current_user)
+  end
+
 end

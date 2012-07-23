@@ -41,5 +41,9 @@ class ApplicationController < ActionController::Base
       end
     end
 
-  helper_method :user_signed_in?, :current_user, :redirect_guest_to_login, :isAdmin?, :require_login!, :only_owner!
+    def isOwner? script
+     current_user == script.user
+    end
+
+  helper_method :isOwner?, :user_signed_in?, :current_user, :redirect_guest_to_login, :isAdmin?, :require_login!, :only_owner!
 end
