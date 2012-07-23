@@ -3,6 +3,8 @@ class User < ActiveRecord::Base
 
   has_many :authorizations
   has_many :scripts
+  has_many :comments
+
   validates :username, :email, :presence => true
 
   def add_new_provider auth_hash

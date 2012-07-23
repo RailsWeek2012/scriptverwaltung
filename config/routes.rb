@@ -1,18 +1,19 @@
 Scriptverwaltung::Application.routes.draw do
 
+  resources :comments, only: [:create, :destroy]
 
   get "users/:id" => "users#show", as: "show_user"
-
   delete "users/:id" => "users#destroy", as: "destroy_user"
 
+  #Provider match
   match "/auth/:provider/callback", :to => "sessions#create"
   match "/auth/failure", :to => "sessions#failure"
 
   resources :scripts
-
   get "scripts/:id/download" => "scripts#download", as: "download_script"
+  get "scripts/:id/comment" => "comments#new", as: "comment_script"
 
-  get   "login" => 'sessions#new', as: "login"
+  get   "login" => "sessions#new", as: "login"
   delete "logout" => "sessions#destroy", as: "logout"
 
   # The priority is based upon order of creation:

@@ -6,3 +6,4 @@ Quellen:
 http://railscasts.com/episodes/134-paperclip
 http://railscasts.com/episodes/304-omniauth-identity
 http://ecmharvey.blogspot.de/2011/07/using-oa-identity-with-omniauth.html
+http://net.tutsplus.com/tutorials/ruby/how-to-use-omniauth-to-authenticate-your-users/
