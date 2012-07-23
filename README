@@ -1,5 +1,14 @@
 Scriptverwaltung
 
+TODO: 
+  -Das editieren eines Scriptes ist für normale User nach dem freigeben nicht mehr möglich.
+  -Das Editieren soll es ermöglichen nur die Attribute zu ändern, ohne das Script erneut hochzuladen.
+  -Der Durchschnitt soll für jedes Script ausgegeben werden in show und im index (im Model definieren und in der View)
+  -User werden anhand der Bewertung ihrer hochgeladenen Scripts bewertet (im Model definieren)
+  
+  -Den Quellcode mit Partials und helpern übersichtlicher machen
+
+
 Raketasks:
 
 rake user:toggle_isadmin    #Ändert den Zugriffsmodus des LETZTEN Users
