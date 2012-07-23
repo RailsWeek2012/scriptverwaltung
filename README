@@ -1,6 +1,11 @@
 Scriptverwaltung
 
+Raketasks:
 
+rake user:toggle_isadmin    #Ändert den Zugriffsmodus des LETZTEN Users
+rake user:new               #Erzeugt einen neuen User und trägt die Authentifizierung des LETZTEN Users in den neuen
+                            User um. Der alte User bleibt bestehen, mitsamt seinen Scripten und Bewertungen.
+                            Er bekommt aber das prefix 'old_'
 
 Quellen:
 http://railscasts.com/episodes/134-paperclip
