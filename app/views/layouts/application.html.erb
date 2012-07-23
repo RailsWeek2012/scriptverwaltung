@@ -13,11 +13,12 @@
           <div class="navbar-inner">
               <div class="container" >
                 <div class="row">
-                  <div class="span1">&nbsp;</div>
-                <div class="span1">
-                <% if user_signed_in? %>
+                  <div class="span4"><a class="brand" href="<%= scripts_path %>">Scriptverwaltung</a></div>
+                  <div class="span4"> &nbsp; </div>
+                  <div class="span4">
+                    <% if user_signed_in? %>
                     <%= link_to "Logout" , logout_path, :class => "btn btn-mini btn-danger", method: :delete  %>
-                <% else %>
+                    <% else %>
                     <%= link_to "Login", login_path, :class => "btn btn-mini btn-info" %>
                 <% end %>
               </div>

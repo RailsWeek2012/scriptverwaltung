@@ -1,6 +1,8 @@
 <p id="notice"><%= notice %></p>
 
-<p>
+
+  <div class="span4">&nbsp;</div>
+  <div class="span4">  
   <b>Name:</b>
   <%= @script.name %>
 </p>
@@ -39,5 +41,8 @@
 
 <!--"#{@script.id}/download"-->
 
-<%= link_to 'Edit', edit_script_path(@script), :class => "btn btn-mini btn-danger" %> |
+<%= link_to 'Edit', edit_script_path(@script), :class => "btn btn-mini btn-danger" %>
 <%= link_to 'Back', scripts_path, :class => "btn btn-mini" %>
+
+</div>
+  <div class="span4">&nbsp;</div>
