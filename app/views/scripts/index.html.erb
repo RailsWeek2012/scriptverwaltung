@@ -1,43 +1,4 @@
 <h1>Listing scripts</h1>
 <br>
-<table class="table table-striped table-bordered table-condesed">
-  <tr>
-    <th>Name</th>
-    <th>Dozent</th>
-    <th>Kurs</th>
-    <th>Fachrichtung</th>
-    <th>Hochschule</th>
-    <th>Beschreibung</th>
-    <th>Erscheinungsdatum</th>
-    <th></th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
-
-<% @scripts.each do |script| %>
-  <tr>
-    <td><%= script.name %></td>
-    <td><%= script.dozent %></td>
-    <td><%= script.kurs %></td>
-    <td><%= script.fachrichtung %></td>
-    <td><%= script.hochschule %></td>
-    <td><%= script.beschreibung %></td>
-    <td><%= script.erscheinungsdatum %></td>
-
-    <td>
-    <%= link_to "Donwload", download_script_path(script), :class => "btn btn-mini btn-info" %>
-    </td>
-    <td>
-      <%= link_to 'Show', script, :class => "btn btn-mini btn-info" %>
-    </td>
-    <%= render partial: 'index_buttons', locals: {script: script} %>
-    </tr>
-
- 
-<% end %>
-</table>
-
-<br />
-
+<%= render partial: 'shared/listings', locals: {scripts: @scripts} %>
 <%= link_to 'New Script', new_script_path, :class => "btn btn-mini btn-info" %>
