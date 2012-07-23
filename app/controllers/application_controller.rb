@@ -7,8 +7,17 @@ class ApplicationController < ActionController::Base
         @current_user ||= User.find(session[:user_id])
       end
     end
+
     def user_signed_in?
       current_user.present?
+    end
+
+    def isAdmin?
+     if current_user
+        @current_user.isAdmin?
+      else
+        false
+      end
     end
 
     def redirect_guest_to_login
@@ -20,5 +29,5 @@ class ApplicationController < ActionController::Base
       end
     end
 
-  helper_method :user_signed_in?, :current_user, :redirect_guest_to_login
+  helper_method :user_signed_in?, :current_user, :redirect_guest_to_login, :isAdmin?
 end

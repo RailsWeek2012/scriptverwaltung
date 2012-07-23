@@ -102,18 +102,4 @@ class ScriptsController < ApplicationController
     #end
    # redirect_to scripts_url
   end
-
-  private
-    def require_login!
-      unless user_signed_in?
-        redirect_to login_path, alert: "Bitte melden Sie sich zuerst an."
-      end
-    end
-    def only_owner!
-      @script = Script.find(params[:id])
-      unless current_user == @script.user
-        redirect_to scripts_path, alert: 'Sie haben keine Berechtigung die Ressource zu ändern'
-      end
-    end
-
 end
