@@ -12,7 +12,7 @@
   </tr>
 
 <% scripts.each do |script| %>
-    <% if isActiv?(script) || isOwner?(script) %>
+    <% if isActiv?(script) || isOwner?(script) || isAdmin? %>
         <tr>
             <td><%= script.name %></td>
             <td><%= script.dozent %></td>

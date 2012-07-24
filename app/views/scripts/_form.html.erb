@@ -27,7 +27,7 @@
   </div>
   <div class="field">
     <%= f.label :erscheinungsdatum %><br />
-    <%= f.date_select :erscheinungsdatum %>
+    <%= f.date_select :erscheinungsdatum, start_year: Time.now.year - 10, end_year: Time.now.year + 1 %>
     <br>
     <%= f.file_field :upload %>
   </div>

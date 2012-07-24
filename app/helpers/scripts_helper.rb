@@ -8,8 +8,4 @@ module ScriptsHelper
     response.headers['Content-length'] = File.size(filepath)
     render :nothing => true
   end
-
-  def isActiv? script
-    script.activated
-  end
 end

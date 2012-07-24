@@ -42,8 +42,25 @@ class ApplicationController < ActionController::Base
     end
 
     def isOwner? script
-     current_user == script.user
+      current_user.eql? script.user
     end
 
-  helper_method :isOwner?, :user_signed_in?, :current_user, :redirect_guest_to_login, :isAdmin?, :require_login!, :only_owner!
+    def isActiv? script
+      script.activated
+    end
+
+    def redirect_back_or_default(default)
+      session[:return_to] ? redirect_to(session[:return_to]) : redirect_to(default)
+      session[:return_to] = nil
+    end
+
+    def store_return_url
+      if request.get?
+         session[:return_to] = request.env["REQUEST_URI"]
+      else
+        session[:return_to] = request.referer
+      end
+    end
+
+  helper_method :isActiv?, :isOwner?, :user_signed_in?, :current_user, :redirect_guest_to_login, :isAdmin?, :require_login!, :only_owner!
 end
