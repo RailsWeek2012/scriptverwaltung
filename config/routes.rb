@@ -3,7 +3,7 @@ Scriptverwaltung::Application.routes.draw do
   resources :comments, only: [:create, :destroy]
 
   get "users/:id" => "users#show", as: "show_user"
-  delete "users/:id" => "users#destroy", as: "destroy_user"
+  get "users/:id/toggle_admin" => "users#toggle_admin", as: "toggle_admin"
 
   #Provider match
   match "/auth/:provider/callback", :to => "sessions#create"
@@ -12,7 +12,7 @@ Scriptverwaltung::Application.routes.draw do
   resources :scripts
   get "scripts/:id/download" => "scripts#download", as: "download_script"
   get "scripts/:id/comment" => "comments#new", as: "comment_script"
-  get "scripts/:id/makeactiv" => "scripts#makeActiv", as: "activate_script"
+  get "scripts/:id/makeactiv" => "scripts#activate", as: "activate_script"
 
   get   "login" => "sessions#new", as: "login"
   delete "logout" => "sessions#destroy", as: "logout"

@@ -13,12 +13,14 @@
     			<% end %>	
 		 <% end %>
 	  <br>
-	  <h3>Meine Uploades </h3>
+	  <h3>Uploads </h3>
 	 <%= render partial: 'shared/listings', locals: {scripts: @user.scripts} %>
 	  <br>
-	  <% if isAdmin? %>
+	  <% if isAdmin? and current_user == @user %>
 	  	<h3>Nicht Active Uploads</h3>
 	 	<%= render partial: 'listing_not_activ', locals: {scripts: Script.all} %>
+	 	<h3>User-Verwaltung</h3>
+	 	<%= render partial: 'userList', locals: {users: User.all} %>
 	 <% end %>
 </div>
 
