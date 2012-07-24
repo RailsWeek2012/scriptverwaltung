@@ -1,5 +1,5 @@
 <%= form_for(@script, :html => { :multipart => true }) do |f| %>
-  <%= render :partial => 'shared/error', :locals => {:entity => @script, :text => "dieses Script" } %>
+  <%= render partial: 'shared/error', locals: {entity: @script, text: "dieses Script" } %>
 
   <div class="field">
     <%= f.label :name %><br />
@@ -35,7 +35,7 @@
     <%= f.submit %>
   </div>
 <% end %>
-<%= link_to 'Show', @script, :class => "btn btn-mini" %>
-<%= link_to 'Back', scripts_path, :class => "btn btn-mini" %>
+<%= link_to 'Show', @script, class: "btn btn-mini" %>
+<%= link_to 'Back', scripts_path, class: "btn btn-mini" %>
 
 

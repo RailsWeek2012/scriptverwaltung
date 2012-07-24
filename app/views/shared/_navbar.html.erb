@@ -6,14 +6,14 @@
           <div class="span4"><a class="brand" href="<%= scripts_path %>">Scriptverwaltung</a></div>
             <div class="pull-right">
               <% if user_signed_in? %>
-                <%= link_to current_user.username , show_user_path(current_user), :class => "btn btn-mini btn-info" %>
-                <%= link_to "Logout" , logout_path, :class => "btn btn-mini btn-danger", method: :delete  %>
+                <%= link_to current_user.username , show_user_path(current_user), class: "btn btn-mini btn-info" %>
+                <%= link_to "Logout" , logout_path, class: "btn btn-mini btn-danger", method: :delete  %>
               <% else %>
-                <%= link_to "Login", login_path, :class => "btn btn-mini btn-info" %>
+                <%= link_to "Login", login_path, class: "btn btn-mini btn-info" %>
               <% end %>
             </div>
-            <%= form_tag scripts_path, :class => "navbar-search pull-right", :method => 'get' do %>
-              <%= text_field_tag :search, params[:search], :class =>"search-query", :placeholder => "Search"  %>
+            <%= form_tag scripts_path, class: "navbar-search pull-right", method: 'get' do %>
+              <%= text_field_tag :search, params[:search], class: "search-query", placeholder: "Search"  %>
             <% end %>
         </div>
       </div>

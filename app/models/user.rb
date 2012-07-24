@@ -5,11 +5,11 @@ class User < ActiveRecord::Base
   has_many :scripts
   has_many :comments
 
-  validates :username, :email, :presence => true
+  validates :username, :email, presence: true
 
   def add_new_provider auth_hash
     unless authorizations.find_by_provider_and_uid(auth_hash["provider"], auth_hash["uid"])
-      Authorization.create :user => self, :provider => auth_hash["provider"], :uid => auth_hash["uid"]
+      Authorization.create user: self, provider: auth_hash["provider"], uid: auth_hash["uid"]
     end
   end
 
@@ -21,7 +21,7 @@ class User < ActiveRecord::Base
     else
       #neu anlegen da noch nie eingeloggt
       if auth_hash['provider']['cas']
-        user = User.new :username => auth_hash["extra"]["user"], :email => auth_hash["extra"]["attributes"][0]["mail"]
+        user = User.new username: auth_hash["extra"]["user"], email: auth_hash["extra"]["attributes"][0]["mail"]
         user.add_new_provider auth_hash
         user.save
         return user

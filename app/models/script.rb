@@ -4,7 +4,7 @@ class Script < ActiveRecord::Base
   attr_accessible :beschreibung, :dozent, :erscheinungsdatum, :fachrichtung, :hochschule, :kurs, :name, :upload
 
   has_attached_file :upload,
-                    :path => ":rails_root/uploaded_scripts/:id-:basename.:extension"
+                    path: ":rails_root/uploaded_scripts/:id-:basename.:extension"
   validates :beschreibung, :dozent, :erscheinungsdatum, :fachrichtung, :hochschule, :kurs, :name, :presence => true
   validates_attachment_presence :upload
   validates_attachment_size :upload, less_than: 5.megabytes

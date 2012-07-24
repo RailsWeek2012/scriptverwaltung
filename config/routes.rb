@@ -1,5 +1,5 @@
 Scriptverwaltung::Application.routes.draw do
-
+  root :to => "scripts#index"
   resources :comments, only: [:create, :destroy]
 
   get "users/:id" => "users#show", as: "show_user"

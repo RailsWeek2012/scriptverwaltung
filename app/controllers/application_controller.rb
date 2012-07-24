@@ -36,8 +36,15 @@ class ApplicationController < ActionController::Base
 
     def only_owner!
       @script = Script.find(params[:id])
-      unless current_user == @script.user || isAdmin?
+      unless current_user == @script.user or isAdmin?
         redirect_to scripts_path, alert: "Sie haben keine Berechtigung die Ressource zu ändern"
+      end
+    end
+
+    def isVisible?
+      @script = Script.find(params[:id])
+      unless current_user == @script.user or isAdmin? or isActiv?(@script)
+        redirect_to scripts_path, alert: "Sie haben keine Berechtigung zum Aufruf dieser Ressource "
       end
     end
 
