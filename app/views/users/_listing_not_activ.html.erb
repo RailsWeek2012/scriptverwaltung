@@ -22,8 +22,8 @@
             <td><%= script.erscheinungsdatum %></td>
             <td>
                 <p>
-                    <%= link_to "Donwload", download_script_path(script), :class => "btn btn-mini btn-info" %>
-                    <%= link_to 'Show', script, :class => "btn btn-mini btn-info" %>
+                    <%= link_to "Donwload", download_script_path(script), class: "btn btn-mini btn-info" %>
+                    <%= link_to 'Show', script, class: "btn btn-mini btn-info" %>
                 </p>
                 <%= render partial: 'scripts/index_buttons', locals: {script: script} %>
             </td>

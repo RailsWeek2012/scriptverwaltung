@@ -41,12 +41,33 @@ class ApplicationController < ActionController::Base
       end
     end
 
-    def isOwner? script
-     current_user == script.user
+    def isVisible?
+      @script = Script.find(params[:id])
+      unless current_user == @script.user or isAdmin? or isActiv?(@script)
+        redirect_to scripts_path, alert: "Sie haben keine Berechtigung zum Aufruf dieser Ressource "
+      end
     end
 
+    def isOwner? script
+      current_user.eql? script.user
+    end
 
+    def isActiv? script
+      script.activated
+    end
 
+    def redirect_back_or_default(default)
+      session[:return_to] ? redirect_to(session[:return_to]) : redirect_to(default)
+      session[:return_to] = nil
+    end
 
-  helper_method :isOwner?, :user_signed_in?, :current_user, :redirect_guest_to_login, :isAdmin?, :require_login!, :only_owner!
+    def store_return_url
+      if request.get?
+         session[:return_to] = request.env["REQUEST_URI"]
+      else
+        session[:return_to] = request.referer
+      end
+    end
+
+  helper_method :isActiv?, :isOwner?, :user_signed_in?, :current_user, :redirect_guest_to_login, :isAdmin?, :require_login!, :only_owner!
 end

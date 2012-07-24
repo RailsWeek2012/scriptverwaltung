@@ -32,15 +32,18 @@
   <%= @script.erscheinungsdatum %>
 </p>
 
-<p><%= link_to "Download", download_script_path(@script), :class => "btn btn-mini btn-info" %></p>
+<p><%= link_to "Download", download_script_path(@script), class: "btn btn-mini btn-info" %></p>
 
 <!--"#{@script.id}/download"-->
 
-<%= link_to 'Edit', edit_script_path(@script), :class => "btn btn-mini btn-danger" %>
-<%= link_to 'Back', scripts_path, :class => "btn btn-mini" %>
+<%= link_to('Edit', edit_script_path(@script), class: "btn btn-mini btn-danger") if isAdmin? or !isActiv?(@script) %>
+<%= link_to 'Back', scripts_path, class: "btn btn-mini" %>
+</p>
+<br>
 <br>
 
 <%= render 'comment' %>
+
 
 
 

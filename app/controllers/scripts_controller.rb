@@ -2,13 +2,13 @@
 class ScriptsController < ApplicationController
   before_filter :require_login!, :except => [ :show, :index, :download ]
   before_filter :only_owner!, :only => [:edit, :update, :destroy]
+  before_filter :isVisible?, :only => [:show]
   # GET /scripts
   # GET /scripts.json
 
   def index
     @scripts = Script.search(params[:search])
-
-
+    store_return_url
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @scripts }
@@ -19,11 +19,10 @@ class ScriptsController < ApplicationController
   # GET /scripts/1.json
   def show
     @script = Script.find(params[:id])
-
-    respond_to do |format|
-      format.html # show.html.erb
-      format.json { render json: @script }
-    end
+      respond_to do |format|
+        format.html # show.html.erb
+        format.json { render json: @script }
+      end
   end
 
   # GET /scripts/new
@@ -39,7 +38,6 @@ class ScriptsController < ApplicationController
 
   # GET /scripts/1/edit
   def edit
-
     @script = Script.find(params[:id])
   end
 
@@ -48,7 +46,6 @@ class ScriptsController < ApplicationController
   def create
     @script = Script.new(params[:script])
     @script.user= User.find(session[:user_id])
-
     respond_to do |format|
       if @script.save
         format.html { redirect_to @script, notice: 'Script wurde angelegt' }
@@ -64,30 +61,27 @@ class ScriptsController < ApplicationController
   # PUT /scripts/1.json
   def update
     @script = Script.find(params[:id])
-
-    respond_to do |format|
-      if @script.update_attributes(params[:script])
-        format.html { redirect_to @script, notice: 'Script wurde geändert.' }
-        format.json { head :no_content }
-      else
-        format.html { render action: "edit" }
-        format.json { render json: @script.errors, status: :unprocessable_entity }
+      respond_to do |format|
+        if @script.update_attributes(params[:script])
+          format.html { redirect_to @script, notice: 'Script wurde geändert.' }
+          format.json { head :no_content }
+        else
+          format.html { render action: "edit" }
+          format.json { render json: @script.errors, status: :unprocessable_entity }
+        end
       end
-    end
   end
+
 
   # DELETE /scripts/1
   # DELETE /scripts/1.json
   def destroy
     @script = Script.find(params[:id])
-    if isAdmin? || isOwner?(@script)
-      @script.destroy
-
-      respond_to do |format|
-    end
-      format.html { redirect_to scripts_url }
-      format.json { head :no_content }
-    end
+        @script.destroy
+        respond_to do |format|
+          format.html { redirect_to scripts_url }
+          format.json { head :no_content }
+        end
   end
 
   def download
@@ -105,7 +99,7 @@ class ScriptsController < ApplicationController
       @script.activated= true
       @script.save
     end
-    redirect_to show_user_path(current_user)
+    redirect_back_or_default(show_user_path(current_user))
   end
 
   private
