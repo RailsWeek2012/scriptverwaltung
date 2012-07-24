@@ -93,7 +93,7 @@ class ScriptsController < ApplicationController
     end
   end
 
-  def makeActiv
+  def activate
     if isAdmin?
       @script = Script.find(params[:id])
       @script.activated= true

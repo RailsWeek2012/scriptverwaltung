@@ -1,0 +1,36 @@
+<br>
+<table class="table table-striped table-bordered table-condesed">
+  <tr>
+    <th>ID</th>
+    <th>Name</th>
+    <th>E-Mail</th>
+    <th>Admin</th>
+    <th></th>
+
+  </tr>
+
+<% users.each do |user| %>
+        <tr>
+            <td><%= user.id %></td>
+            <td><%= user.username %></td>
+            <td><%= user.email %></td>
+            <td><% if user.isAdmin %>
+                    <%= "ja" %>
+                 <% else %>
+                    <%= "nein" %>
+                  <% end %>
+               </td>
+            <td>
+                <p> <% unless user == current_user %>
+                        <% if user.isAdmin %>
+                            <%= link_to "Admin nehmen", toggle_admin_path(user), confirm: 'Rechte Nehmen?', class: "btn btn-mini btn-danger" %>
+                        <% else %>
+                            <%= link_to 'Admin geben', toggle_admin_path(user), confirm: 'Rechte geben?',class: "btn btn-mini btn-success" %>
+                        <% end %>
+                    <% end %>
+                </p>
+            </td>
+        </tr>
+<% end %>
+</table>
+<br />

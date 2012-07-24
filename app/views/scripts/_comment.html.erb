@@ -1,6 +1,7 @@
 <h3>Bewertungen</h3>
 <% @script.comments.each do |comment| %>
-    <p>Note: <%= comment.mark %> User: <%= comment.user.username %> <%= link_to('Löschen', comment, method: :delete, confirm: 'Bist du sicher?', class: "btn btn-mini btn-danger") if isAdmin? or isOwner?(comment) %> </p>
+    <p>Note: <%= comment.mark %> User: <%= link_to(comment.user.username, show_user_path(comment.user), class: "btn") %>
+    	<%= link_to('Löschen', comment, method: :delete, confirm: 'Bist du sicher?', class: "btn btn-mini btn-danger") if isAdmin? or isOwner?(comment) %> </p>
     <%= comment.content %>
     <hr>
 <% end %>
