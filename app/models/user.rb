@@ -22,12 +22,12 @@ class User < ActiveRecord::Base
       #neu anlegen da noch nie eingeloggt
       if auth_hash['provider']['cas']
         user = User.new username: auth_hash["extra"]["user"], email: auth_hash["extra"]["attributes"][0]["mail"]
-        user.add_new_provider auth_hash
-        user.save
-        return user
       elsif auth_hash['provider']['identity']
-        raise Exception, "Not implemented yet"
+        user = User.new username: Identity.find(auth_hash["uid"]).username, email: auth_hash["info"]["email"]
       end
+      user.add_new_provider auth_hash
+      user.save
+      user
     end
   end
 end

@@ -21,7 +21,6 @@ class SessionsController < ApplicationController
 
   def failure
     redirect_to login_path, alert: "Ihre Anmeldung ist fehlgeschlagen. Versuchen Sie es erneut."
-    #render action: "new"
   end
   def destroy
     session[:user_id] = nil

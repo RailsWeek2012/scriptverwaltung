@@ -36,7 +36,7 @@ class ApplicationController < ActionController::Base
 
     def only_owner!
       @script = Script.find(params[:id])
-      unless isOwner?(@script) or isAdmin?
+      unless owner_access? or isAdmin?
         redirect_to scripts_path, alert: "Sie haben keine Berechtigung die Ressource zu ändern"
       end
     end
@@ -67,6 +67,10 @@ class ApplicationController < ActionController::Base
       else
         session[:return_to] = request.referer
       end
+    end
+
+    def owner_access? script
+      isOwner?(script) and !isActiv?(script)
     end
 
   helper_method :isActiv?, :isOwner?, :user_signed_in?, :current_user, :redirect_guest_to_login, :isAdmin?, :require_login!, :only_owner!
