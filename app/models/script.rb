@@ -26,4 +26,15 @@ class Script < ActiveRecord::Base
     	find(:all)
   	end
   end
+
+  def average_mark
+    comments = self.comments
+    unless comments.isEmpty?
+      sum = 0
+      self.comments.each do |comment|
+        sum += comment.mark
+      end
+      return sum / comments.count
+    end
+  end
 end
