@@ -36,7 +36,7 @@ class ApplicationController < ActionController::Base
 
     def only_owner!
       @script = Script.find(params[:id])
-      unless current_user == @script.user || isAdmin?
+      unless isOwner?(@script) or isAdmin?
         redirect_to scripts_path, alert: "Sie haben keine Berechtigung die Ressource zu ändern"
       end
     end
@@ -44,6 +44,9 @@ class ApplicationController < ActionController::Base
     def isOwner? script
      current_user == script.user
     end
+
+
+
 
   helper_method :isOwner?, :user_signed_in?, :current_user, :redirect_guest_to_login, :isAdmin?, :require_login!, :only_owner!
 end

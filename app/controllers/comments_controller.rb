@@ -45,7 +45,7 @@ class CommentsController < ApplicationController
   end
   private
     def redirect_on_error script
-      if redirect_to_scripts_because_script_is_deaktivated(script) and redirect_to_script_because_comment_exists(script)
+      if redirect_to_scripts_because_script_is_deactivated(script) and redirect_to_script_because_comment_exists(script)
         return false
       end
       true
@@ -58,9 +58,9 @@ class CommentsController < ApplicationController
       end
       true
     end
-    def redirect_to_scripts_because_script_is_deaktivated script
+    def redirect_to_scripts_because_script_is_deactivated script
       unless script.activated?
-        redirect_to scripts_path, notice: "Sie können nur Bewertungen auf existierende Scripts erzeugen"
+        redirect_to scripts_path, notice: "Sie können nur Bewertungen auf existierende/freigegebene Scripts erzeugen"
         return false
       end
       true

@@ -13,9 +13,11 @@ namespace :user do
     new = User.new
     new.username= old.username
     new.email=  old.email
+    old.email= old.id.to_s + old.email
     new.isAdmin= old.isAdmin?
-    old.username= "old_#{old.username}"
+    old.username= old.id.to_s + old.username
     new.save
+    old.save
     old.authorizations.each do |auth|
       auth.user= new
       auth.save
