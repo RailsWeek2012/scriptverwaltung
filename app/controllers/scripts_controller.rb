@@ -92,9 +92,9 @@ class ScriptsController < ApplicationController
   def download
     if script_activated?
       @script = Script.find(params[:id])
-      send_file @script.upload.path , :content_type =>  @script.upload.content_type
+      send_file @script.upload.path , content_type:  @script.upload.content_type
     else
-      redirect_to scripts_path, :alert => "Das Script ist noch nicht freigeschaltet oder existiert nicht"
+      redirect_to scripts_path, alert: "Das Script ist noch nicht freigeschaltet oder existiert nicht"
     end
   end
 

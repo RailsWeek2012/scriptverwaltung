@@ -7,6 +7,6 @@ module ScriptsHelper
     response.headers['Content-Disposition'] = "attachment; filename=\"#{File.basename(filepath)}\""
     response.headers['X-Sendfile'] = filepath
     response.headers['Content-length'] = File.size(filepath)
-    render :nothing => true
+    render nothing: true
   end
 end
