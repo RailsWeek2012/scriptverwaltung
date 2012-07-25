@@ -1,14 +1,37 @@
 Scriptverwaltung
 
-TODO: 
-  -Das editieren eines Scriptes ist für normale User nach dem freigeben nicht mehr möglich
-  -Den Quellcode mit Partials und helpern übersichtlicher machen
+Eine kleine Ruby on Rails App, die es erlaubt Scripts hochzuladen und zu verwalten.
+
+Login:
+    Als Loginservice wird CAS benutzt. Identity ist nur zum Testen gedacht und sollte nicht produktiv genutzt werden.
+
+Scripte:
+    Scripts müssen PDF Dateien sein, die maximal 25 MB groß sind. Bevor die öffentlich downloadbar sind, müssen sie von einem Admin freigeschaltet werden.
+    Scripts werden im Ordner "uploaded_scripts" gespeichert.
+
+Suchen von Scripts:
+    Das Suchen von Scripts ist möglich. Als Suchengine wird Sunspot verwendet.
+
+User:
+    Nur User haben die Möglichkeit Scripte hochzuladen und Bewertungen zu schreiben
+
+Admin:
+    Admins sind User. Admins können Scripts freischalten, löschen, hochladen, verändern und bekommen eine Email, wenn ein User ein
+    neues Skript hochgeladen hat. Standardmässig ist jeder neu angemeldete User KEIN Admin. Ein Admin muss mit dem raketask "user:toggle_isadmin" gesetzt werden.
+    Danach kann der Admin über sein Userprofil andere Usern die Adminrechte geben, bzw nehmen.
+
+Bewertungen/Kommentare:
+    User können zu einem Script nur eine Bewertung schreiben. Der Notenbereich geht von 1(gut) - 6(schlecht). Er hat die Möglichkeit die Bewertung zu löschen.
+
+Mailfeature:
+    Um das mailfeature "produktiv" einzusetzen, muss in der Datei "config/environments/development.rb". Valide Login Daten für einen SMTP Server eingegeben werden.
 
 Raketasks:
 rake user:toggle_isadmin    #Ändert den Zugriffsmodus des LETZTEN Users
 rake user:new               #Erzeugt einen neuen User und trägt die Authentifizierung des LETZTEN Users in den neuen
-                            User um. Der alte User bleibt bestehen, mitsamt seinen Scripten und Bewertungen.
-                            Er bekommt aber das prefix 'old_'
+                            User um. Der alte User bleibt bestehen, mitsamt seinen Scripten und Bewertungen. Er bekommt aber das prefix 'old_'
+
+
 
 Quellen:
 http://railscasts.com/episodes/134-paperclip
