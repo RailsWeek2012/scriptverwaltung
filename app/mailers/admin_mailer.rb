@@ -6,6 +6,6 @@ class AdminMailer < ActionMailer::Base
     @user = user
     @script = script
     @fullurl  = fullurl
-    mail(:to => user.email, subject: "Es steht ein neues Script zum freischalten bereit")
+    mail(to: user.email, subject: "Es steht ein neues Script zum freischalten bereit")
   end
 end

@@ -2,7 +2,7 @@
  	<div class="span12">
 		<h1>Userprofil von <%= @user.username %> </h1>
 		<p>Username: <%= @user.username %> </p>
-		<% if user_signed_in? and @user.id == session[:user_id] #mache den nachfolgenden Content nur den den eigenen User sichtbar %>
+		<% if user_signed_in? and @user.id.eql? session[:user_id] #mache den nachfolgenden Content nur den den eigenen User sichtbar %>
 				<p>Haupt-email: <%= @user.email %></p>
 				<br><br>
     			<h3>Registrierte Authentifizierungsservices </h3>
@@ -16,7 +16,7 @@
 	  <h3>Uploads </h3>
 	 <%= render partial: 'shared/listings', locals: {scripts: @user.scripts} %>
 	  <br>
-	  <% if isAdmin? and current_user == @user %>
+	  <% if isAdmin? and current_user.eql? @user %>
 	  	<h3>Nicht Active Uploads</h3>
 	 	<%= render partial: 'listing_not_activ', locals: {scripts: Script.all} %>
 	 	<h3>User-Verwaltung</h3>
