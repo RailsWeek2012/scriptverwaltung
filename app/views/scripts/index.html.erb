@@ -1,4 +1,6 @@
 <h1>Auflistung aller Scripts</h1>
 <br>
+
 <%= render partial: 'shared/listings', locals: {scripts: @scripts} %>
+<%= paginate @scripts %>
 <%= link_to 'New Script', new_script_path, class: "btn btn-mini btn-info" %>

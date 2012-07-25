@@ -29,6 +29,12 @@ gem 'omniauth'
 gem 'omniauth-identity'
 gem 'omniauth-cas'
 
+gem 'sunspot_rails'
+gem 'progress_bar'
+gem 'sunspot_solr'
+gem 'kaminari'
+gem "sunspot_with_kaminari"
+
 #dependencies omniauth-cas
 gem 'addressable'
 gem 'awesome_print'

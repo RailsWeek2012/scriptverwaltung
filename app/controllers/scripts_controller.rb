@@ -7,7 +7,11 @@ class ScriptsController < ApplicationController
   # GET /scripts.json
 
   def index
-    @scripts = Script.search(params[:search])
+    @search = Script.search do
+      fulltext params[:search], minimum_match: 1
+      paginate page: params[:page], per_page: 15
+    end
+    @scripts = @search.results
     store_return_url
     respond_to do |format|
       format.html # index.html.erb
