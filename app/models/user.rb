@@ -7,11 +7,13 @@ class User < ActiveRecord::Base
 
   validates :username, :email, presence: true
 
+  #http://net.tutsplus.com/tutorials/ruby/how-to-use-omniauth-to-authenticate-your-users/ Teil 7
   def add_new_provider auth_hash
     unless authorizations.find_by_provider_and_uid(auth_hash["provider"], auth_hash["uid"])
       Authorization.create user: self, provider: auth_hash["provider"], uid: auth_hash["uid"]
     end
   end
+
 
   def self.findOrCreateNewUserWithProvider auth_hash
     auth = Authorization.find_by_uid_and_provider(auth_hash['uid'],auth_hash['provider'])
