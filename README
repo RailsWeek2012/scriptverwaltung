@@ -1,6 +1,7 @@
 Scriptverwaltung
 
 Eine kleine Ruby on Rails App, die es erlaubt Scripts hochzuladen und zu verwalten.
+Um die Scriptverwaltung zu initialisieren geben Sie "rake startup" in ihre Konsole ein und starten Sie danach den Server.
 
 Login:
     Als Loginservice wird CAS benutzt. Identity ist nur zum Testen gedacht und sollte nicht produktiv genutzt werden.
