@@ -1,0 +1,13 @@
+<!-- http://guides.rubyonrails.org/action_mailer_basics.html -->
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />
+    </head>
+    <body>
+        <h3>Der User <%= @script.user.username %> hat ein neues Script hochgeladen</h3>
+        <br>
+        <%= render partial: 'shared/script' %>
+        <p>Um das Script zu begutachten klicken sie hier: <%= link_to(@script.name,@fullurl + script_path(@script)) %></p>
+    </body>
+</html>

@@ -50,6 +50,7 @@ class ScriptsController < ApplicationController
       if @script.save
         format.html { redirect_to @script, notice: 'Script wurde angelegt' }
         format.json { render json: @script, status: :created, location: @script }
+        sentMailToAdmins
       else
         format.html { render action: "new" }
         format.json { render json: @script.errors, status: :unprocessable_entity }
@@ -111,4 +112,20 @@ class ScriptsController < ApplicationController
       false
     end
 
+    def getHostUrl
+      return "http://#{request.host}:#{request.port.to_s}"
+    end
+
+    def sentMailToAdmins
+      admins = User.all.select do |admin|
+        admin if admin.isAdmin
+      end
+      admins.each do |admin|
+        begin
+          AdminMailer.notification_email(admin,@script,getHostUrl).deliver
+        rescue Exception
+          #do nothing
+        end
+      end
+    end
 end

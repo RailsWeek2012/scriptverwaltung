@@ -34,4 +34,13 @@ Scriptverwaltung::Application.configure do
 
   # Expands the lines which load the assets
   config.assets.debug = true
-end
+
+  config.action_mailer.delivery_method = :test  #zu :smtp aendern
+  config.action_mailer.smtp_settings = {
+      :address              => "smtp.web.de",  #der web smtp wird nicht geblockt
+      :port                 => 587,            #port 587 wird nicht geblockt
+      :user_name            => '<username>',   #ein validen usernamen eingeben
+      :password             => '<passwort>',   #ein valides passwort eingeben
+      :authentication       => 'plain',
+      :enable_starttls_auto => true  }
+  end

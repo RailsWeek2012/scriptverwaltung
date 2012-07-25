@@ -1,44 +1,9 @@
-  <b>Name:</b>
-  <%= @script.name %>
-</p>
-
-<p>
-  <b>Dozent:</b>
-  <%= @script.dozent %>
-</p>
-
-<p>
-  <b>Kurs:</b>
-  <%= @script.kurs %>
-</p>
-
-<p>
-  <b>Fachrichtung:</b>
-  <%= @script.fachrichtung %>
-</p>
-
-<p>
-  <b>Hochschule:</b>
-  <%= @script.hochschule %>
-</p>
-
-<p>
-  <b>Beschreibung:</b>
-  <%= @script.beschreibung %>
-</p>
-
-<p>
-  <b>Erscheinungsdatum:</b>
-  <%= @script.erscheinungsdatum %>
-</p>
+<%= render partial: 'shared/script' %>
 
 <p><%= link_to "Download", download_script_path(@script), class: "btn btn-mini btn-info" %></p>
 
-<!--"#{@script.id}/download"-->
-
 <%= link_to('Edit', edit_script_path(@script), class: "btn btn-mini btn-danger") if isAdmin? or !isActiv?(@script) %>
 <%= link_to 'Back', scripts_path, class: "btn btn-mini" %>
-</p>
 <br>
 <br>
 
