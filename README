@@ -10,10 +10,22 @@ rake user:new               #Erzeugt einen neuen User und trägt die Authentifiz
                             User um. Der alte User bleibt bestehen, mitsamt seinen Scripten und Bewertungen.
                             Er bekommt aber das prefix 'old_'
 
-Quellen:
+
+Genutze Quellen:
+
+Quellen Download-Funktion:
 http://railscasts.com/episodes/134-paperclip
+
+Quellen User-Management:
 http://railscasts.com/episodes/304-omniauth-identity
 http://ecmharvey.blogspot.de/2011/07/using-oa-identity-with-omniauth.html
 http://net.tutsplus.com/tutorials/ruby/how-to-use-omniauth-to-authenticate-your-users/
-http://railscasts.com/episodes/37-simple-search-form
+
+Quellen Custom-RakeTask:
 http://www.ultrasaurus.com/sarahblog/2009/12/creating-a-custom-rake-task/
+
+Quellen Suche:
+http://railscasts.com/episodes/37-simple-search-form
+https://github.com/sunspot/sunspot/blob/master/README.md
+http://railscasts.com/episodes/278-search-with-sunspot?autoplay=true
+http://stackoverflow.com/questions/10717809/solr-minimum-match-results-ranking
