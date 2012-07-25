@@ -2,6 +2,26 @@ Scriptverwaltung
 
 Eine kleine Ruby on Rails App, die es erlaubt Scripts hochzuladen und zu verwalten.
 Um die Scriptverwaltung zu initialisieren geben Sie "rake startup" in ihre Konsole ein und starten Sie danach den Server.
+Falls es zu einem Error kommt:
+
+    bundle
+    rake db:migrate
+    rake sunspot:solr:start
+    rake sunspot:reindex
+    rails s
+    
+Falls ein Fehler kommt der Error: Severe errors in solr configuration. oder ähnlich lautet, dann liegt es daran, dass bereits eine sunspot engine gestartet ist, die fehlerhafte Konfigs geladen hat.
+Hiezu folgende Befehle.
+killall java
+gem uninstall sunspot_rails
+gem uninstall sunspot_with_kaminari
+gem uninstall sunspot_solr
+bundle                     
+rake db:migrate            #
+rake sunspot:solr:start    # Oder rake startup
+rake sunspot:reindex       #
+rails s
+
 
 Login:
     Als Loginservice wird CAS benutzt. Identity ist nur zum Testen gedacht und sollte nicht produktiv genutzt werden.

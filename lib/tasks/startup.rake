@@ -2,7 +2,7 @@ require File.expand_path('../../../config/environment.rb', __FILE__)
 
 #desc Raketask to set up scriptverwaltung
 task :startup => :environment do
-  system "bundle install"
+  system "bundle"
   system "rake db:migrate"
   system "rake sunspot:solr:start"
   system "rake sunspot:reindex"
