@@ -36,7 +36,7 @@ class CommentsController < ApplicationController
   # DELETE /comments/1.json
   def destroy
     @comment = Comment.find(params[:id])
-    if isAdmin? or @comment.user == current_user
+    if isAdmin? or isOwner?(@comment)
       @comment.destroy
       redirect_to @comment.script, notice: "Bewertung gelöscht"
     else
