@@ -107,7 +107,7 @@ class ScriptsController < ApplicationController
     def script_activated?
       @script = Script.find(params[:id])
       unless @script.nil?
-        return (@script.user == current_user or isAdmin?)
+        return (isOwner?(@script) or isAdmin? or isActiv?(@script) )
       end
       false
     end

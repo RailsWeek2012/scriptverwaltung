@@ -2,8 +2,9 @@
 
 <p><%= link_to "Download", download_script_path(@script), class: "btn btn-mini btn-info" %></p>
 
-<%= link_to('Edit', edit_script_path(@script), class: "btn btn-mini btn-danger") if isAdmin? or !isActiv?(@script) %>
-<%= link_to 'Back', scripts_path, class: "btn btn-mini" %>
+<%= render partial: 'scripts/index_buttons', locals: {script: @script} %>
+
+
 <br>
 <br>
 

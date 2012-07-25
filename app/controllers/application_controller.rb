@@ -43,7 +43,7 @@ class ApplicationController < ActionController::Base
 
     def isVisible?
       @script = Script.find(params[:id])
-      unless current_user == @script.user or isAdmin? or isActiv?(@script)
+      unless current_user.eql? @script.user or isAdmin? or isActiv?(@script)
         redirect_to scripts_path, alert: "Sie haben keine Berechtigung zum Aufruf dieser Ressource "
       end
     end
