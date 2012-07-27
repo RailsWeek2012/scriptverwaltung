@@ -1,7 +1,8 @@
 Scriptverwaltung
 
 Eine kleine Ruby on Rails App, die es erlaubt Scripts hochzuladen und zu verwalten.
-Um die Scriptverwaltung zu initialisieren geben Sie "rake startup" in ihre Konsole ein und starten Sie danach den Server.
+Um die Scriptverwaltung zu initialisieren geben Sie erst "bundle" und dann "rake startup" in ihre Konsole ein und starten Sie danach den Server.
+
 Falls es zu einem Error kommt:
 
     bundle
@@ -10,17 +11,18 @@ Falls es zu einem Error kommt:
     rake sunspot:reindex
     rails s
     
-Falls ein Fehler kommt der Error: Severe errors in solr configuration. oder ähnlich lautet, dann liegt es daran, dass bereits eine sunspot engine gestartet ist, die fehlerhafte Konfigs geladen hat.
-Hiezu folgende Befehle.
-killall java
-gem uninstall sunspot_rails
-gem uninstall sunspot_with_kaminari
-gem uninstall sunspot_solr
-bundle                     
-rake db:migrate            #
-rake sunspot:solr:start    # Oder rake startup
-rake sunspot:reindex       #
-rails s
+Falls ein Fehler kommt der Error: "Severe errors in solr configuration." oder ähnlich lautet, dann liegt es daran, dass bereits eine sunspot engine gestartet ist, die fehlerhafte Configs geladen hat.
+Hierzu folgende Befehle.
+
+    killall java
+    gem uninstall sunspot_rails
+    gem uninstall sunspot_with_kaminari
+    gem uninstall sunspot_solr
+    bundle                     
+    rake db:migrate            #
+    rake sunspot:solr:start    # Oder rake startup
+    rake sunspot:reindex       #
+    rails s
 
 
 Login:
@@ -38,7 +40,7 @@ User:
 
 Admin:
     Admins sind User. Admins können Scripts freischalten, löschen, hochladen, verändern und bekommen eine Email, wenn ein User ein
-    neues Skript hochgeladen hat. Standardmässig ist jeder neu angemeldete User KEIN Admin. Ein Admin muss mit dem raketask "user:toggle_isadmin" gesetzt werden.
+    neues Skript hochgeladen hat. Standardmässig ist jeder neu angemeldete User KEIN Admin. Ein Admin muss mit dem raketask "rake user:toggle_isadmin" gesetzt werden.
     Danach kann der Admin über sein Userprofil andere Usern die Adminrechte geben, bzw nehmen.
 
 Bewertungen/Kommentare:
@@ -48,11 +50,9 @@ Mailfeature:
     Um das mailfeature "produktiv" einzusetzen, muss in der Datei "config/environments/development.rb". Valide Login Daten für einen SMTP Server eingegeben werden.
 
 Raketasks:
-rake user:toggle_isadmin    #Ändert den Zugriffsmodus des LETZTEN Users
-rake user:new               #Erzeugt einen neuen User und trägt die Authentifizierung des LETZTEN Users in den neuen
-                            User um. Der alte User bleibt bestehen, mitsamt seinen Scripten und Bewertungen. Er bekommt aber das prefix 'old_'
-
-
+    rake user:toggle_isadmin    #Ändert den Zugriffsmodus des LETZTEN Users
+    rake user:new               #Erzeugt einen neuen User und trägt die Authentifizierung des LETZTEN Users in den neuen
+                            User um. Der alte User bleibt bestehen, mitsamt seinen Scripten und Bewertungen. Er bekommt aber das Prefix seine id
 
 
 Genutze Quellen:
